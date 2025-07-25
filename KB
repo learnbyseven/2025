@@ -1,0 +1,36 @@
+Pulled: private-registry.f5.com/aigw/charts/aigw:0.2.3
+Digest: sha256:bd57999d01af188245f46d7a12a74a827411f41da6d547b9da1fadc23d33d4b0
+NAME: aigw
+LAST DEPLOYED: Fri Jul 25 07:24:43 2025
+NAMESPACE: ai-gateway
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+* AI Gateway can be accessed within your cluster, at the following DNS name and port:
+
+    aigw.ai-gateway.svc.cluster.local:80
+
+
+* AI Gateway Processors can be accessed within your cluster, at the following DNS name and port:
+
+    aigw-processors-f5.ai-gateway.svc.cluster.local:80
+
+    Ensure that processor configuration includes this DNS name and port:
+
+      processors:
+        - name: language-id
+          type: external
+          config:
+            endpoint: http://aigw-processors-f5.ai-gateway.svc.cluster.local:80
+            namespace: f5
+            version: 1
+
+
+* The deployed aigw.yaml is:
+
+    server:
+      address: :4141
+    
+
+* If this is your first time using F5 AI Gateway, please follow the examples at https://aigateway.clouddocs.f5.com
